@@ -1,0 +1,2 @@
+class PdfRenderersController < ApplicationController
+end
