@@ -2,29 +2,27 @@ class PdfRenderersController < ApplicationController
 require "prawn"
 require 'unirest'
 
-  def show
-    # response = Unirest.patch("#{ ENV['HOST_NAME']}.json",
-    #             headers:{"Accept" => "application/json"},
-    #             parameters: {}
-    #             ).body
+  def dope
+    response = Unirest.get("https://crypto-currents-squidshack.herokuapp.com/api/v1/students.json",
+                headers:{"Accept" => "application/json"},
+                parameters: {
+                  first_name: params[:first_name]
+                }
+                ).body
 
-    # @student = Student.find(params[:id])
-    pdf = Prawn::Document.new
-    pdf.text "Monkeys IQ > Victor IQ"
+
+
+    pdf = Prawn::Document.new(
+    pdf.text @response.first_name
     send_data pdf.render, :type => "application/pdf", disposition: "inline"
+  end
 
-    # @student = Student.find(params[:id])
+  def wacky
 
-    # pdf = Prawn::Document.new
-    # pdf.text "Hello World"
-    # pdf.render_file "assignment.pdf"
-    # @resume = Resume.find(params[:id])
+  end
 
-    # @student = Student.find(params[:id])
+  def prof
 
-    pdf = Prawn::Document.new
-    pdf.text "Hello World"
-    pdf.render_file "assignment.pdf"
   end
 
 end
