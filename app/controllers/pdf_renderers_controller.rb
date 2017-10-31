@@ -7,6 +7,7 @@ require "prawn"
     pdf = Prawn::Document.new
     pdf.text "Hello World"
     pdf.render_file "assignment.pdf"
+    @resume = Resume.find(params[:id])
   end
 
 end
