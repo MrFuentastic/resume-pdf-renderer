@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/resume' => 'pdf_renderers#show'
+  get '/' => 'pdf_renderers#wacky'
 end

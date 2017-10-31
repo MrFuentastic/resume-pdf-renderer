@@ -39,25 +39,32 @@ require 'unirest'
     #                                 }]
     #                 }
     
-    @response = Unirest.get("https://crypto-currents-squidshack.herokuapp.com/api/v1/students.json",
+    response = Unirest.get("https://crypto-currents-squidshack.herokuapp.com/api/v1/students.json",
                 headers:{"Accept" => "application/json"},
                 ).body
+    
+    name = "#{response["first_name"]} #{response["last_name"]}"
+    email = "#{response["email"]}"
+
     # pdf = Prawn::Document.new
     # pdf.text "Monkeys IQ > Victor IQ"
     # send_data pdf.render, :type => "application/pdf", disposition: "inline"
     
-    # @student = Student.find(params[:id])
-    
-    # pdf = Prawn::Document.new
-    # pdf.text "Hello World"
-    # pdf.render_file "assignment.pdf"
-    # @resume = Resume.find(params[:id])
+  end
 
-    # @student = Student.find(params[:id])
+  def wacky
 
-    # pdf = Prawn::Document.new
-    # pdf.text "#{response.}"
-    # pdf.render_file "assignment.pdf"
+    response = Unirest.get("https://crypto-currents-squidshack.herokuapp.com/api/v1/students.json",
+    headers:{"Accept" => "application/json"},
+    ).body
+
+    name = "#{response[0]["first_name"]} #{response[0]["last_name"]}"
+    email = "#{response[0]["email"]}"
+
+    pdf = Prawn::Document.new
+    pdf.text "#{name} #{email}"
+    send_data pdf.render, :type => "application/pdf", disposition: "inline"
+
   end
 
 end
