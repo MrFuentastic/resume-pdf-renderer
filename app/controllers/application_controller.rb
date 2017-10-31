@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   def show
     @resume = Resume.find(params[:id])
   end
+  
 end
