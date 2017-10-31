@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/resume' => 'pdf-renderer#show'
+  get '/resume' => 'pdf_renderers#show'
 end
