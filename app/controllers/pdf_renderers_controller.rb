@@ -1,10 +1,17 @@
 class PdfRenderersController < ApplicationController
 require "prawn"
+require 'unirest'
 
   def show
+    # response = Unirest.patch("#{ ENV['HOST_NAME']}.json",
+    #             headers:{"Accept" => "application/json"},
+    #             parameters: {}
+    #             ).body
+
+    # @student = Student.find(params[:id])
     pdf = Prawn::Document.new
     pdf.text "Monkeys IQ > Victor IQ"
-    send_data pdf.render, :filename => "Monkeys.pdf", :type => "application/pdf"
+    send_data pdf.render, :type => "application/pdf", disposition: "inline"
 
     # @student = Student.find(params[:id])
 
@@ -18,7 +25,6 @@ require "prawn"
     pdf = Prawn::Document.new
     pdf.text "Hello World"
     pdf.render_file "assignment.pdf"
->>>>>>> 56e95a1453e1d7f1399b58bb9c1a0f2d62cef3b4
   end
 
 end
