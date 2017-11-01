@@ -2,26 +2,16 @@ class PdfRenderersController < ApplicationController
 require "prawn"
 require 'unirest'
 
-<<<<<<< HEAD
   def dope
-    response = Unirest.get("https://crypto-currents-squidshack.herokuapp.com/api/v1/students.json",
-                headers:{"Accept" => "application/json"},
-                parameters: {
-                  first_name: params[:first_name]
-                }
-                ).body
-
-
-
-    pdf = Prawn::Document.new(
-    pdf.text @response.first_name
-    send_data pdf.render, :type => "application/pdf", disposition: "inline"
+    # pdf = Prawn::Document.new(
+    # pdf.text "test"
+    # send_data pdf.render, :type => "application/pdf", disposition: "inline"
   end
 
   def wacky
 
   end
-=======
+
   def show
     
     # @student = Student.find(params[:id])
@@ -62,26 +52,26 @@ require 'unirest'
     @response = Unirest.get("https://crypto-currents-squidshack.herokuapp.com/api/v1/students.json",
                 headers:{"Accept" => "application/json"},
                 ).body
-    # pdf = Prawn::Document.new
-    # pdf.text "Monkeys IQ > Victor IQ"
-    # send_data pdf.render, :type => "application/pdf", disposition: "inline"
-    
-    # @student = Student.find(params[:id])
-    
-    # pdf = Prawn::Document.new
-    # pdf.text "Hello World"
-    # pdf.render_file "assignment.pdf"
-    # @resume = Resume.find(params[:id])
->>>>>>> 06fbf4409b9c2ef31b243e66b91f1a71ea901ab8
+
+
+
+    # respond_to do |format|
+    #   format.html
+    #   format.pdf do
+    #     pdf = ResumePdf.new(@response,view_context)
+    #     send_data pdf.render, filename:
+    #     "#{full_name}_Resume.pdf",
+    #     type: "application/pdf",
+    #     disposition: "inline"
+    #   end
+    # end
+
+
+  end
+
 
   def prof
 
-<<<<<<< HEAD
-=======
-    # pdf = Prawn::Document.new
-    # pdf.text "#{response.}"
-    # pdf.render_file "assignment.pdf"
->>>>>>> 06fbf4409b9c2ef31b243e66b91f1a71ea901ab8
   end
 
 end
